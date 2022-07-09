@@ -1,0 +1,202 @@
+\RequirePackage{filecontents}
+\begin{filecontents}{references.bib}
+@inproceedings{muzny-etal-2017-two,
+    title = "A Two-stage Sieve Approach for Quote Attribution",
+    author = "Muzny, Grace  and
+      Fang, Michael  and
+      Chang, Angel  and
+      Jurafsky, Dan",
+    booktitle = "Proceedings of the 15th Conference of the {E}uropean Chapter of the Association for Computational Linguistics: Volume 1, Long Papers",
+    month = apr,
+    year = "2017",
+    address = "Valencia, Spain",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/E17-1044",
+    pages = "460--470",
+    abstract = "We present a deterministic sieve-based system for attributing quotations in literary text and a new dataset: QuoteLi3. Quote attribution, determining who said what in a given text, is important for tasks like creating dialogue systems, and in newer areas like computational literary studies, where it creates opportunities to analyze novels at scale rather than only a few at a time. We release QuoteLi3, which contains more than 6,000 annotations linking quotes to speaker mentions and quotes to speaker entities, and introduce a new algorithm for quote attribution. Our two-stage algorithm first links quotes to mentions, then mentions to entities. Using two stages encapsulates difficult sub-problems and improves system performance. The modular design allows us to tune for overall performance or higher precision, which is useful for many real-world use cases. Our system achieves an average F-score of 87.5 across three novels, outperforming previous systems, and can be tuned for precision of 90.4 at a recall of 65.1.",
+}
+
+@article{van2003literair,
+  title={Literair mechaniek: Inleiding tot de analyse van verhalen en gedichten. Tweede, herziene druk (1e druk: 1999)},
+  author={Van Boven, EMA and Dorleijn, Gillis J},
+  year={2003},
+  publisher={Coutinho}
+}
+
+@techreport{schoen2014newsreader,
+  title={NewsReader Document-Level Annotation Guidelines-Dutch},
+  author={Schoen, Anneleen and van Son, Chantal and van Erp, Marieke and van Vliet, Hennie},
+  year={2014},
+  institution={VU University},
+  note={\url{http://www.newsreader-project.eu/files/2013/01/8-AnnotationGuidelinesDutch.pdf}}
+}
+
+@inproceedings{roesiger2018literary,
+    title = {Towards Coreference for Literary Text: Analyzing Domain-Specific Phenomena},
+    author = {R\"osiger, Ina  and Schulz, Sarah  and Reiter, Nils},
+    year={2018},
+    booktitle={Proceedings of LaTeCH-CLfL},
+    pages={129--138},
+    note = {\url{http://aclweb.org/anthology/W18-4515}}
+}
+
+
+@book{9bca698086c54014a12afec3838511d1,
+title = "Literair Mechaniek: Inleiding tot de analyse van verhalen en gedichten. Derde, grondig herziene druk",
+author = "{van Boven}, E.M.A. and G.J. Dorleijn",
+year = "2013",
+language = "Dutch",
+isbn = "978-90-469-0351-3",
+publisher = "Coutinho",
+}
+
+
+\end{filecontents}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{kpfonts, mdwlist, microtype, xcolor, natbib}
+\usepackage[unicode=true]{hyperref}
+\usepackage{enumitem}
+\hypersetup{pdfborder={0 0 0}, breaklinks=true}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\newcommand{\n}[1]{\textcolor{red}{#1}}
+
+\title{Annotation guidelines for Quote Attribution}
+\author{Frank van den Berg}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{How to annotate?}
+
+\begin{itemize*}
+\item Load the text into the annotation tool\footnote{https://github.com/muzny/quoteannotator} designed by  \citet{muzny-etal-2017-two}.
+\item Read the text from start to finish, mark and correct quote- and mention spans as
+  you go.
+\item Each time you mark a span of text as a quote, you should also select the character that is the quote's speaker. Mentions should also be annotated with the character that they refer to. New characters can be added to the character list.
+\item Link each quote to the mention that is the most obvious indicator of that quote's speaker.
+\item Before saving the file to your machine, make sure that each quote is connected to a mention. 
+\end{itemize*}
+
+\bigskip
+\noindent In the examples that will follow, correctly annotated spans are indicated with square brackets {[} and {]}; spans that should not be annotated are indicated with \linebreak \n{[} red brackets \n{]}. 
+
+\section{Quotes}
+We are only focusing on the annotation of \textbf{direct speech}, as opposed to \textbf{indirect speech} and \textbf{free indirect discourse}. 
+Direct quotes are used to indicate that the speaker said precisely what is written. These quotes appear entirely between quotation marks.
+
+\begin{itemize}
+\item A correct quotation span can look as follows:
+    \begin{itemize}[label={}]
+        \item {[}`Waar wacht je op?'{]}\textsubscript{quote} vraagt Lea.
+    \end{itemize}
+
+\item Quotes can also consist of multiple sentences:
+    \begin{itemize}[label={}]
+        \item {[}`Höss,'{]}\textsubscript{quote} had hij gezegd, {[}`de commandant van Auschwitz. Boeiend. Had hij niet een verhouding met een gevangene in het kamp? Hij is opgehangen in Polen, niet?'{]}\textsubscript{quote}
+    \end{itemize}
+    
+\pagebreak\item However, not all text between quotation marks is a direct quote:
+    \begin{itemize}[label={}]
+        \item Ze moesten zijn intelligentie en werkhouding peilen, uitvinden hoe hij hiervoor les had gehad, en of hij mogelijk \n{[}`studiebeurswaardig?'\n{]}\textsubscript{quote} zou blijken.
+     \end{itemize}
+
+\item Instead of quotation marks, quotes can also be introduced with a dash (-) sign:
+    \begin{itemize}[label={}]
+        \item De drie jongens rolden op een matras over elkaâr.
+        {[}- Was het mooi, mama?{]}\textsubscript{quote} vroeg Lili.
+    \end{itemize}
+
+\item If there is dialogue without quotation marks or a dash sign, we do not annotate it, as this is indirect speech \citep{van2003literair}:
+    \begin{itemize}[label={}]
+        \item  Ook daar werd hij door niemand herkend.\\
+        Iemand zei \n{[}dat hij een bril droeg.\n{]}\textsubscript{quote}\\
+        Een andere loketbeambte ontkende dat ten stelligste.
+    \end{itemize}
+
+\item Citations at the beginning of a book also do not count as dialogue, as they are paratext:
+    \begin{itemize}[label={}]
+        \item \n{[}"In dit geval haten prinsen de verrader, al houden ze van het \\verraad."\n{]}\textsubscript{quote} - Samuel Daniel \\
+        1\\
+        Om zeven uur op een Caribische ochtend (...)
+    \end{itemize}
+\end{itemize}
+
+
+\section{Mentions}
+The only mentions that should be annotated are the spans of text that refer to the speaker of a quote. Often, these mentions can be identified when the subject
+of a reported speech verb (says, replies, etc.) is found next to a quotation. 
+
+\begin{itemize}
+\item If we apply this to our earlier example, we see that `Lea' should be annotated as the mention:
+    \begin{itemize}[label={}]
+        \item {[}`Waar wacht je op?'{]}\textsubscript{quote} vraagt [Lea]\textsubscript{mention}.
+    \end{itemize}
+\end{itemize}
+
+\noindent Not every quote is accompanied by a speech verb. In some cases, there can even be multiple mention candidates of a quote's speaker. In these cases, we will consistently choose the mention that is the closest to the quote.
+
+\begin{itemize}
+\item Here both `Ouwe Joe Hunt' and `een leraar' refer to the same speaker, but we choose the mention `een leraar', as it is the closest to the quote:
+    \begin{itemize}[label={}]
+        \item Op de derde ochtend van dat najaarstrimester hadden we geschiedenis van \n{[}Ouwe Joe Hunt\n{]}\textsubscript{mention}, droogkomisch innemend in zijn driedelig pak, [een leraar]\textsubscript{mention} wiens systeem van orde berustte op het in stand houden van voldoende maar niet buitensporige landerigheid. {[}`Jullie weten nog dat ik jullie gevraagd heb alvast iets te lezen over het koningschap van Hendrik viii.'{]}\textsubscript{quote}
+    \end{itemize}
+\end{itemize}
+
+\noindent Sometimes, the mention of a quote's speaker can even be found inside an earlier quote. We only annotate these mentions when they are \textbf{explicitly addressed}, e.g. by their name.
+\begin{itemize}
+\item The mention of the second quote can be found as the addressee in the first quote:
+    \begin{itemize}[label={}]
+        \item Ik keek vermoedelijk geimponeerder dan {[}Dixon{]}\textsubscript{mention1} gezond achtte.
+        {[}`[Webster]\textsubscript{mention2}, ga daar eens op door. '{]}\textsubscript{quote1} \\
+        {[}`Ik dacht dat het gewoon een gedicht was over een kerkuil, meneer.'{]}\textsubscript{quote2}
+    \end{itemize}
+\end{itemize}
+
+\noindent However, we do not annotate mentions of speakers when they are addressed in an earlier quote only by their personal pronoun (`je', `u' etc.).
+\begin{itemize}
+\item We annotate `ze' as the mention of both the first and the third quote, as `je' is not an explicit way of addressing the speaker of the third quote:
+    \begin{itemize}[label={}]
+        \item  {[}'Het is een oude man, denk ik,'{]}\textsubscript{quote1} zei [ze]\textsubscript{mention1,3}. \\
+        {[}`Heb \n{[}je\n{]}\textsubscript{mention3} hem dan gezien?'{]}\textsubscript{quote2} vroeg [ik]\textsubscript{mention2}. \\
+        {[}`Nee, dat kan ik horen. '{]}\textsubscript{quote3}
+    \end{itemize}    
+\end{itemize}
+
+\noindent Although very rare, there are cases where the speaker of a quote is not mentioned.
+\begin{itemize}
+\item Here we only annotate the quote, but no mention is annotated:
+    \begin{itemize}[label={}]
+        \item  Voetstappen kwamen op hem af. \\
+        {[}'Alstublieft, gaat u mee. U verstoort dit samenzijn.'{]}\textsubscript{quote}\\
+        Hardhandig werd hij aan zijn schouders weggevoerd.
+    \end{itemize}    
+\end{itemize}
+
+\noindent As a final note: all the mentions we annotate should always be outside the quotes they are connected to.
+
+\section{Quote-mention links}
+Each quote should be linked to the mention of that quote's speaker.
+While each quote can only be linked to one mention, it can be the case that one mention is linked to multiple quotes.
+
+\begin{itemize}
+\item In the following sentence the mention `ze' is linked to both quotation spans:
+    \begin{itemize}
+                \item {[}`Die trappen,'{]}\textsubscript{quote1} zegt [ze]\textsubscript{mention1,2}. \\ {[}`Die trappen van jou worden mijn dood nog eens.']\textsubscript{quote2}
+    \end{itemize}
+    
+\item A similar situation happens when the same pair of speakers keeps taking turns:
+    \begin{itemize}
+                \item {[}Ik{]}\textsubscript{mention1,4} zei: {[}`Ik wil het wel voor je doen.'{]}\textsubscript{quote1}. \\
+                {[}`Nee,']\textsubscript{quote2} zegt {[}ze{]}\textsubscript{mention2,3}. {[}`Veel te duur.'{]}\textsubscript{quote3}\\
+                {[}`O, je doet het liever zelf?'{]}\textsubscript{quote4}
+    \end{itemize}
+
+\end{itemize}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{document}
