@@ -1,4 +1,4 @@
-# A Rule-based and Neural Approach Comparison for Quote Attribution on Dutch Literature
+# A Neural Approach to Quote Attribution in Dutch Literature
 Master's thesis for the MSc Information Science at the University of Groningen.
 
 In order to replicate our results, make sure to first clone the dutchcoref repository and install the required packages: </br>
