@@ -53,7 +53,7 @@ $ python qaclassifier.py  -t '../riddlecoref/split/riddle/train/*.conll' -v '../
 To run the quote attribution classifier implemented within dutchcoref, make sure to first place all the model files in the dutchcoref folder.
 Now run the classifier as follows:
 ```bash
-$ python3 coref_neural.py --outputprefix /tmp/Gilbert_EtenBiddenBeminnen /riddlecoref/parses/Gilbert_EtenBiddenBeminnen/ --neural=quote
+$ python3 coref.py --outputprefix /tmp/Gilbert_EtenBiddenBeminnen /riddlecoref/parses/Gilbert_EtenBiddenBeminnen/ --neural=quote
 ```
 
 In order to evaluate the results, we use evalquotes.py, for which gold output from the dutchcoref system is required:
