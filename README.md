@@ -4,7 +4,7 @@ Master's thesis for the MSc Information Science at the University of Groningen.
 In order to replicate our results, make sure to first clone the dutchcoref repository and install the required packages: </br>
 https://github.com/andreasvc/dutchcoref.
 
-The OpenBoek files, including our annotated quote data, will be made available in the near future: </br>
+The OpenBoek files, including our annotated quote data, are available here: </br>
 https://andreasvc.github.io/openboek/.
 
 </br>
